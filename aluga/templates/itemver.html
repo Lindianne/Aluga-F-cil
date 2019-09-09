@@ -1,0 +1,75 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block container %}
+<div class="container">
+	
+<div class="row">
+		<div class="col-md-1 col-sm-0"></div>
+		<div class="col-md-6 col-sm-12">
+			<img src="{{ item.imagem.url }}" class="img-fluid " width="750px">
+		</div>
+		<div class="col-md-4">
+			<h1 class="text" style="position: relative;left: 20%"> {{ item.nome }} &nbsp &nbsp &nbsp <a href="{{ url }}"><button  type="button" class="btn btn-secondary"> Voltar </button></a></h1>
+
+	
+
+			<p><span style="font-size: 16px">R$ {{ item.preco }}</span></p>
+
+			<h4><span class="badge badge-secondary">Categoria</span></h4>
+			<p>{{ item.categoria }}</p>
+			<h4><span class="badge badge-secondary">Descrição</span></h4>
+			<p>{{ item.descricao }}</p>
+			<hr>
+			<div class="">
+				<div class="card" style=" width: 100%; right: 10%; position: relative; left: 0%">
+				  <img src="{% static 'anonimo.png' %}" style=" width: 20%; border-radius: 50% ; position: relative; left: 5%;">
+				  <div class="card-body">
+				   
+			
+				  
+				  <ul class="list-group list-group-flush">
+
+				    <li class="list-group-item">
+				    	
+				    	
+				 
+
+				    	<span style="font-size: 18px; font-weight: bold ; color: black"> {{item.user.username}} </span></li>
+
+				    <li class="list-group-item">
+				    	
+				    	
+				 
+
+				    	<span style="font-size: 18px; font-weight: bold ; color: black"> {{ item.user.email }} </span>
+
+
+
+
+
+
+				    	</li>
+				    	<li class="list-group-item">
+				    	<span style="font-size: 18px; font-weight: bold ; color: black">  {{ item.user.telefone.telefone }} </span>
+				    	</li>
+				    			
+				  </ul>
+					  	
+				  </div>
+				</div>
+				<br>
+			</div>
+			{% if editar %}
+				<a href="{% url 'itemeditar' item.id %}"><button  type="button" class="btn btn-secondary" ">Editar item</button></a>&nbsp &nbsp
+				<a href="{% url 'itemexcluir' item.id %}"><button  type="button" class="btn btn-secondary" ">Excluir item</button></a>
+			{% endif %}
+	
+
+	
+			
+
+		</div>
+	</div>
+	
+	</div>
+{% endblock %}

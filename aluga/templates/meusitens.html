@@ -1,0 +1,53 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block titulo %}Meus itens{% endblock %}
+
+{% block foto %} {% static 'anonimo.png' %} {% endblock %}
+
+{% block usuario %}
+	<li class="active">
+        <a href="" data-toggle="collapse" aria-expanded="false" class="">
+            <i class=""></i>
+            {{ usuario.username }}
+        </a>
+        <br>
+    </li>
+    <li>
+        <a href="#">
+            <i class=""></i>
+            {{ usuario.email }}
+        </a>
+
+        <a href="" data-toggle="collapse" aria-expanded="false" class="">
+            <i class=""></i>
+            {{ usuario.telefone.telefone }}
+        </a>
+    
+    </li>
+{% endblock %}
+
+{% block container %}
+<div id="content">
+	<h1>Meus itens</h1>
+	<div class="row">
+	{% for item in itens %}
+		<div class="col-sm-4">
+	    <div class="card">
+	      <div class="card-body">
+	        <h5 class="card-title">{{ item.nome }} </h5>
+	        <p class="card-text"><a href="{% url 'itemver' item.id %}"><img src="{{ item.imagem.url }}" width="250px" height="250px"></a></p>
+	        <a href="{% url 'itemver' item.id %}" class="btn btn-primary">R$ {{ item.preco }}</a>
+	      </div>
+	    </div>
+	  </div>
+	{% endfor %}
+	</div>
+	<br>
+<br>
+	<center>
+	<a href="{% url 'itemcadastro' %}"><button class="btn btn-primary">Adicionar outro item</button></a>
+	</center>
+</div>
+	
+{% endblock %}

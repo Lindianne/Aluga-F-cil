@@ -1,0 +1,26 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block container %}
+	<h3>Anúncio recentes</h3>
+	<div class="row">
+		{% for item in itens %}
+		<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+			<div class="card" style="border-radius: 25px">
+			  <a href="{% url 'itemver' item.id %}"><img class="card-img-top" src="{{ item.imagem.url }}"  width="250px" height="250px" style="border-radius: 25px "></a>
+			  <div class="card-body">
+			    <a href="{% url 'itemver' item.id %}" class="titulo"><h5 class="card-title "> {{ item.nome }} </h5></a>
+			  
+			  <ul class="list-group list-group-flush">
+
+			    <li class="list-group-item">
+			    	<span style="font-size: 18px; font-weight: bold">R$ {{ item.preco }} </span></li>
+			  </ul>
+				  	
+			  </div>
+			</div>
+			<br>
+		</div>
+		
+		{% endfor %}
+	</div>
+{% endblock %}
